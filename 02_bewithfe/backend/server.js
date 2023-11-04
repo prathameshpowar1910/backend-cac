@@ -6,37 +6,17 @@ app.get("/",(req,res) => {
     res.send("Server is ready")
 });
 
-app.get("/jokes", (req,res) => {
+app.get("/api/superheroes", (req,res) => {
     // const data = require("./data/jokes.json");
     const data = [
-        {
-            id:1,
-            title:'A joke',
-            content:'This is a joke'
-        },
-        {
-            id:2,
-            title:'Another joke',
-            content:'This is another joke'
-        },
-        {
-            id:3,
-            title:'Yet another joke',
-            content:'This is yet another joke'
-        },
-        {
-            id:4,
-            title:'Still another joke',
-            content:'This is still another joke'
-        },
-        {
-            id:5,
-            title:'Last joke',
-            content:'This is the last joke'
-        }
+        {id:1, name: "Batman", universe: "DC" },
+        {id:2, name: "Superman", universe: "DC" },
+        {id:3, name: "Spiderman", universe: "Marvel" },
+        {id:4, name: "Ironman", universe: "Marvel" },
     ]
 
-    res.send(data.slice(0,5));
+    res.send(data);
+    // res.send(data.slice(0,5));
 });
 
 const port = process.env.PORT || 3000;
