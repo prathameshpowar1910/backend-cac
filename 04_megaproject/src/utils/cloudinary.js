@@ -17,10 +17,10 @@ const uploadOnCloudinary = async (localFilePath) => {
     });
 
     //console.log("File uploaded successfully", response.url);
-
+    fs.unlinkSync(localFilePath); // delete the file from the server
     return response;
   } catch (error) {
-    fs.unlinkSync(localFilePath); // delete the file from the server
+    fs.unlinkSync(localFilePath);
     return null;
   }
 };
