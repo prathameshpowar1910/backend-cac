@@ -99,7 +99,7 @@ const registerUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(201, createdUser, "User created successfully"));
 });
 
-const loginUser = asynHandler(async (req, res) => {
+const loginUser = asyncHandler(async (req, res) => {
   // req body->data
   // email or username
   // find that user exists or not
@@ -110,9 +110,12 @@ const loginUser = asynHandler(async (req, res) => {
 
   const { email, username, password } = req.body;
 
-  if (!email || !username) {
+  if (!email && !username) {
     throw new ApiError(400, "Username or Email required");
   }
+  // if (!(email || username)) {
+  //   throw new ApiError(400, "Username or Email required");
+  // }
 
   const user = await User.findOne({
     $or: [{ username }, { email }],
